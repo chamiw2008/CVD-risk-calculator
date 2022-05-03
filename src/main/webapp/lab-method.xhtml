@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>  
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">  
+    <h:head>  
+        <title>WHO Cardiovascular Disease Risk Calculator - Southeast Asian Region</title>  
+    </h:head>  
+    <h:body>  
+
+        <h1>WHO Cardiovascular Disease Risk Calculator - Southeast Asian Region</h1>
+        <h2>Laboratory Method</h2>  
+
+        <h:form id="lab">
+
+            <p:messages />
+
+            <p:panelGrid columns="2">
+
+                <p:outputLabel value="Diabetes"/>
+                <p:selectOneRadio id="diabetesStatus" value="#{selectMethod.dmFlag}" required="true" 
+                                  requiredMessage="Please select the diabetes status">
+                    <f:selectItem itemLabel="Yes" itemValue="1"/>
+                    <f:selectItem itemLabel="No" itemValue="0"/>
+                </p:selectOneRadio>
+
+                <p:outputLabel value="Gender"/>
+                <p:selectOneRadio id="gender" value="#{selectMethod.genderFlag}" required="true" 
+                                  requiredMessage="Please select the gender">
+                    <f:selectItem itemLabel="Male" itemValue="1"/>
+                    <f:selectItem itemLabel="Female" itemValue="0"/>
+                </p:selectOneRadio>
+
+                <p:outputLabel value="Smoking"/>
+                <p:selectOneRadio id="smokingStatus" value="#{selectMethod.smokingFlag}" required="true" 
+                                  requiredMessage="Please select the smoking status">
+                    <f:selectItem itemLabel="Yes" itemValue="0"/>
+                    <f:selectItem itemLabel="No" itemValue="1"/>
+                </p:selectOneRadio>
+
+                <p:outputLabel value="Age (years)"/>
+                <p:inputText id="age" value="#{selectMethod.age}" required="true"
+                             requiredMessage="Age is required"/>
+
+                <p:outputLabel value="Systolic Blood Pressure (mmHg)"/>
+                <p:inputText id="sbp" value="#{selectMethod.sbp}" required="true" 
+                             requiredMessage="Please enter a valid systolic blood pressure"/>
+
+                <p:outputLabel value="Total Blood Cholestrol level (mmol/l)"/>
+                <p:inputText id="tcl" value="#{selectMethod.totalCholestrol}" required="true" 
+                             requiredMessage="Please enter the total cholestrol" />
+
+                <p:outputLabel value="Height (m)"/>
+                <p:inputText id="ht" value="#{selectMethod.height}" required="true" 
+                             requiredMessage="Please enter the height" />
+
+                <p:outputLabel value="Weight (Kg)"/>
+                <p:inputText id="wt" value="#{selectMethod.weigth}" required="true" 
+                             requiredMessage="Please enter the weight" />
+
+            </p:panelGrid>
+
+            <br></br>
+            <p:commandButton action="#{selectMethod.calculateLab()}" value="Calculate" update="lab"/>
+
+        </h:form>
+
+    </h:body>  
+</html>  
